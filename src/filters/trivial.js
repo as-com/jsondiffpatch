@@ -18,7 +18,7 @@ export const diffFilter = function trivialMatchesDiffFilter(context) {
     return;
   }
   if (typeof context.right === 'undefined') {
-    context.setResult([context.left, 0, 0]).exit();
+    context.setResult([null, 0, 0]).exit();
     return;
   }
   if (
@@ -30,11 +30,11 @@ export const diffFilter = function trivialMatchesDiffFilter(context) {
   context.leftType = context.left === null ? 'null' : typeof context.left;
   context.rightType = context.right === null ? 'null' : typeof context.right;
   if (context.leftType !== context.rightType) {
-    context.setResult([context.left, context.right]).exit();
+    context.setResult([null, context.right]).exit();
     return;
   }
   if (context.leftType === 'boolean' || context.leftType === 'number') {
-    context.setResult([context.left, context.right]).exit();
+    context.setResult([null, context.right]).exit();
     return;
   }
   if (context.leftType === 'object') {
@@ -44,17 +44,17 @@ export const diffFilter = function trivialMatchesDiffFilter(context) {
     context.rightIsArray = isArray(context.right);
   }
   if (context.leftIsArray !== context.rightIsArray) {
-    context.setResult([context.left, context.right]).exit();
+    context.setResult([null, context.right]).exit();
     return;
   }
 
   if (context.left instanceof RegExp) {
     if (context.right instanceof RegExp) {
       context
-        .setResult([context.left.toString(), context.right.toString()])
+        .setResult([null, context.right.toString()])
         .exit();
     } else {
-      context.setResult([context.left, context.right]).exit();
+      context.setResult([null, context.right]).exit();
     }
   }
 };

@@ -1,6 +1,8 @@
 jsondiffpatch
 =============
 
+This fork removes support for reversing patches to save storage space.
+
 <!--- badges -->
 [![Build Status](https://secure.travis-ci.org/benjamine/jsondiffpatch.svg)](http://travis-ci.org/benjamine/jsondiffpatch)
 [![Code Climate](https://codeclimate.com/github/benjamine/jsondiffpatch/badges/gpa.svg)](https://codeclimate.com/github/benjamine/jsondiffpatch)

@@ -64,13 +64,13 @@ class DiffPatcher {
     return this.processor.process(new PatchContext(left, delta));
   }
 
-  reverse(delta) {
-    return this.processor.process(new ReverseContext(delta));
-  }
-
-  unpatch(right, delta) {
-    return this.patch(right, this.reverse(delta));
-  }
+  // reverse(delta) {
+  //   return this.processor.process(new ReverseContext(delta));
+  // }
+  //
+  // unpatch(right, delta) {
+  //   return this.patch(right, this.reverse(delta));
+  // }
 
   clone(value) {
     return clone(value);
