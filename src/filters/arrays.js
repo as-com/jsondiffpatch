@@ -164,7 +164,7 @@ export const diffFilter = function arraysDiffFilter(context) {
       _t: 'a',
     };
     for (index = commonHead; index < len1 - commonTail; index++) {
-      result[`_${index}`] = [null, 0, 0];
+      result[`_${index}`] = [0, 0, 0];
     }
     context.setResult(result).exit();
     return;
@@ -184,7 +184,7 @@ export const diffFilter = function arraysDiffFilter(context) {
   for (index = commonHead; index < len1 - commonTail; index++) {
     if (arrayIndexOf(seq.indices1, index - commonHead) < 0) {
       // removed
-      result[`_${index}`] = [null, 0, 0];
+      result[`_${index}`] = [0, 0, 0];
       removedItems.push(index);
     }
   }
@@ -232,7 +232,7 @@ export const diffFilter = function arraysDiffFilter(context) {
             result[`_${index1}`].splice(1, 2, index, ARRAY_MOVE);
             if (!includeValueOnMove) {
               // don't include moved value on diff, to save bytes
-              result[`_${index1}`][0] = null;
+              result[`_${index1}`][0] = 0;
             }
 
             index2 = index;

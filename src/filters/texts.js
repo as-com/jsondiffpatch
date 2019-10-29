@@ -66,7 +66,7 @@ export const diffFilter = function textsDiffFilter(context) {
       context.options.textDiff.minLength) ||
     DEFAULT_MIN_LENGTH;
   if (context.left.length < minLength || context.right.length < minLength) {
-    context.setResult([null, context.right]).exit();
+    context.setResult([0, context.right]).exit();
     return;
   }
   // large text, try to use a text-diff algorithm
@@ -74,7 +74,7 @@ export const diffFilter = function textsDiffFilter(context) {
   if (!diffMatchPatch) {
     // diff-match-patch library not available,
     // fallback to regular string replace
-    context.setResult([null, context.right]).exit();
+    context.setResult([0, context.right]).exit();
     return;
   }
   let diff = diffMatchPatch.diff;

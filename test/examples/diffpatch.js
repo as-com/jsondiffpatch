@@ -94,31 +94,31 @@ examples.atomicValues = [
   {
     left: null,
     right: false,
-    delta: [null, false],
+    delta: [0, false],
     reverse: [false, null],
   },
   {
     left: null,
     right: true,
-    delta: [null, true],
+    delta: [0, true],
     reverse: [true, null],
   },
   {
     left: null,
     right: 42,
-    delta: [null, 42],
+    delta: [0, 42],
     reverse: [42, null],
   },
   {
     left: null,
     right: 'some text',
-    delta: [null, 'some text'],
+    delta: [0, 'some text'],
     reverse: ['some text', null],
   },
   {
     left: null,
     right: exampleDate(),
-    delta: [null, exampleDate()],
+    delta: [0, exampleDate()],
     reverse: [exampleDate(), null],
   },
   {
@@ -128,7 +128,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -160,25 +160,25 @@ examples.atomicValues = [
   {
     left: false,
     right: true,
-    delta: [null, true],
+    delta: [0, true],
     reverse: [true, false],
   },
   {
     left: false,
     right: 42,
-    delta: [null, 42],
+    delta: [0, 42],
     reverse: [42, false],
   },
   {
     left: false,
     right: 'some text',
-    delta: [null, 'some text'],
+    delta: [0, 'some text'],
     reverse: ['some text', false],
   },
   {
     left: false,
     right: exampleDate(),
-    delta: [null, exampleDate()],
+    delta: [0, exampleDate()],
     reverse: [exampleDate(), false],
   },
   {
@@ -188,7 +188,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -205,7 +205,7 @@ examples.atomicValues = [
   {
     left: false,
     right: [1, 2, 3],
-    delta: [null, [1, 2, 3]],
+    delta: [0, [1, 2, 3]],
     reverse: [[1, 2, 3], false],
   },
   {
@@ -226,19 +226,19 @@ examples.atomicValues = [
   {
     left: true,
     right: 42,
-    delta: [null, 42],
+    delta: [0, 42],
     reverse: [42, true],
   },
   {
     left: true,
     right: 'some text',
-    delta: [null, 'some text'],
+    delta: [0, 'some text'],
     reverse: ['some text', true],
   },
   {
     left: true,
     right: exampleDate(),
-    delta: [null, exampleDate()],
+    delta: [0, exampleDate()],
     reverse: [exampleDate(), true],
   },
   {
@@ -248,7 +248,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -265,7 +265,7 @@ examples.atomicValues = [
   {
     left: true,
     right: [1, 2, 3],
-    delta: [null, [1, 2, 3]],
+    delta: [0, [1, 2, 3]],
     reverse: [[1, 2, 3], true],
   },
   {
@@ -287,19 +287,19 @@ examples.atomicValues = [
   {
     left: 42,
     right: -1,
-    delta: [null, -1],
+    delta: [0, -1],
     reverse: [-1, 42],
   },
   {
     left: 42,
     right: 'some text',
-    delta: [null, 'some text'],
+    delta: [0, 'some text'],
     reverse: ['some text', 42],
   },
   {
     left: 42,
     right: exampleDate(),
-    delta: [null, exampleDate()],
+    delta: [0, exampleDate()],
     reverse: [exampleDate(), 42],
   },
   {
@@ -309,7 +309,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -326,7 +326,7 @@ examples.atomicValues = [
   {
     left: 42,
     right: [1, 2, 3],
-    delta: [null, [1, 2, 3]],
+    delta: [0, [1, 2, 3]],
     reverse: [[1, 2, 3], 42],
   },
   {
@@ -348,13 +348,13 @@ examples.atomicValues = [
   {
     left: 'some text',
     right: 'some fext',
-    delta: [null, 'some fext'],
+    delta: [0, 'some fext'],
     reverse: ['some fext', 'some text'],
   },
   {
     left: 'some text',
     right: exampleDate(),
-    delta: [null, exampleDate()],
+    delta: [0, exampleDate()],
     reverse: [exampleDate(), 'some text'],
   },
   {
@@ -364,7 +364,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -381,7 +381,7 @@ examples.atomicValues = [
   {
     left: 'some text',
     right: [1, 2, 3],
-    delta: [null, [1, 2, 3]],
+    delta: [0, [1, 2, 3]],
     reverse: [[1, 2, 3], 'some text'],
   },
 
@@ -396,7 +396,7 @@ examples.atomicValues = [
   {
     left: exampleDate(),
     right: new Date(2020, 5, 31, 15, 12, 30),
-    delta: [null, new Date(2020, 5, 31, 15, 12, 30)],
+    delta: [0, new Date(2020, 5, 31, 15, 12, 30)],
     reverse: [new Date(2020, 5, 31, 15, 12, 30), exampleDate()],
   },
   {
@@ -406,7 +406,7 @@ examples.atomicValues = [
       b: 2,
     },
     delta: [
-      null,
+      0,
       {
         a: 1,
         b: 2,
@@ -423,7 +423,7 @@ examples.atomicValues = [
   {
     left: exampleDate(),
     right: [1, 2, 3],
-    delta: [null, [1, 2, 3]],
+    delta: [0, [1, 2, 3]],
     reverse: [[1, 2, 3], exampleDate()],
   },
   {
@@ -449,7 +449,7 @@ examples.atomicValues = [
     name: 'RegExp -> RegExp',
     left: /regex/g,
     right: /another regex/gi,
-    delta: [null, '/another regex/gi'],
+    delta: [0, '/another regex/gi'],
     reverse: ['/another regex/gi', '/regex/g'],
   },
 
@@ -474,7 +474,7 @@ examples.atomicValues = [
     },
     right: [1, 2, 3],
     delta: [
-      null,
+      0,
       [1, 2, 3],
     ],
     reverse: [
@@ -564,7 +564,7 @@ examples.text = [
   {
     left: shortText,
     right: largeText,
-    delta: [null, largeText],
+    delta: [0, largeText],
     reverse: [largeText, shortText],
   },
   {
@@ -608,7 +608,7 @@ examples.text = [
     },
     left: largeText.substr(0, 9),
     right: largeText.substr(0, 11).replace(/Madre/g, 'Padre'),
-    delta: [null, '-Padre,\ncua'],
+    delta: [0, '-Padre,\ncua'],
     reverse: ['-Padre,\ncua', '-Madre,\nc'],
     exactReverse: false,
   },
@@ -627,7 +627,7 @@ examples.objects = [
       b: 2,
     },
     delta: {
-      a: [null, 42],
+      a: [0, 42],
     },
     reverse: {
       a: [42, 1],
@@ -674,7 +674,7 @@ examples.objects = [
             l: {
               m: {
                 n: {
-                  o: [null, true],
+                  o: [0, true],
                 },
               },
             },
@@ -741,7 +741,7 @@ examples.objects = [
             l: {
               m: {
                 n: {
-                  o: [null, 5],
+                  o: [0, 5],
                   w: [12],
                 },
               },
@@ -749,7 +749,7 @@ examples.objects = [
           },
         },
       },
-      c: [null, 0, 0],
+      c: [0, 0, 0],
     },
     reverse: {
       a: {
@@ -779,7 +779,7 @@ examples.objects = [
       a: 1,
     },
     delta: {
-      b: [null, 0, 0],
+      b: [0, 0, 0],
     },
     reverse: {
       b: [2],
@@ -806,9 +806,9 @@ examples.arrays = [
     right: [1, 3, 4, 5, 8, 9, 9.1, 10],
     delta: {
       _t: 'a',
-      _1: [null, 0, 0],
-      _5: [null, 0, 0],
-      _6: [null, 0, 0],
+      _1: [0, 0, 0],
+      _5: [0, 0, 0],
+      _6: [0, 0, 0],
       6: [9.1],
     },
     reverse: {
@@ -842,8 +842,8 @@ examples.arrays = [
     right: [1, 2, 3, 7, 5, 6, 8, 9, 4, 10],
     delta: {
       _t: 'a',
-      _3: [null, 8, 3],
-      _6: [null, 3, 3],
+      _3: [0, 8, 3],
+      _6: [0, 3, 3],
     },
     reverse: {
       _t: 'a',
@@ -857,8 +857,8 @@ examples.arrays = [
     right: [2, 4, 1, 3],
     delta: {
       _t: 'a',
-      _1: [null, 0, 3],
-      _3: [null, 1, 3],
+      _1: [0, 0, 3],
+      _3: [0, 1, 3],
     },
     reverse: {
       _t: 'a',
@@ -915,7 +915,7 @@ examples.arrays = [
     delta: {
       _t: 'a',
       2: {
-        width: [null, 12],
+        width: [0, 12],
       },
     },
     reverse: {
@@ -974,10 +974,10 @@ examples.arrays = [
     delta: {
       _t: 'a',
       2: {
-        width: [null, 12],
-        height: [null, 0, 0],
+        width: [0, 12],
+        height: [0, 0, 0],
       },
-      _7: [null, 2, 3],
+      _7: [0, 2, 3],
     },
     reverse: {
       _t: 'a',
@@ -1054,18 +1054,18 @@ examples.arrays = [
       0: [{ id: 3 }],
       2: {
         inner: {
-          property: [null, 'abcd'],
+          property: [0, 'abcd'],
         },
       },
       3: [{ id: 9 }],
-      _0: [null, 0, 0],
-      _1: [null, 0, 0],
-      _3: [null, 0, 0],
-      _5: [null, 0, 0],
-      _6: [null, 0, 0],
-      _7: [null, 0, 0],
-      _8: [null, 0, 0],
-      _9: [null, 0, 0],
+      _0: [0, 0, 0],
+      _1: [0, 0, 0],
+      _3: [0, 0, 0],
+      _5: [0, 0, 0],
+      _6: [0, 0, 0],
+      _7: [0, 0, 0],
+      _8: [0, 0, 0],
+      _9: [0, 0, 0],
     },
     reverse: {
       _t: 'a',
@@ -1145,16 +1145,16 @@ examples.arrays = [
       _t: 'a',
       3: {
         inner: {
-          property: [null, 'abcd'],
+          property: [0, 'abcd'],
         },
       },
-      _5: [null, 2, 3],
+      _5: [0, 2, 3],
     },
     reverse: {
       _t: 'a',
       2: {
         inner: {
-          property: [null, 'abc'],
+          property: [0, 'abc'],
         },
       },
       _2: ['', 5, 3],
@@ -1201,10 +1201,10 @@ examples.arrays = [
       _t: 'a',
       2: {
         inner: {
-          property: [null, 'abcd'],
+          property: [0, 'abcd'],
         },
       },
-      _2: [null, 1, 3],
+      _2: [0, 1, 3],
     },
     reverse: {
       _t: 'a',
@@ -1213,7 +1213,7 @@ examples.arrays = [
           property: ['abcd', 'abc'],
         },
       },
-      _2: [null, 1, 3],
+      _2: [0, 1, 3],
     },
     exactReverse: false,
   },
@@ -1264,19 +1264,19 @@ examples.arrays = [
       _t: 'a',
       1: {
         inner: {
-          property: [null, 'abcd'],
+          property: [0, 'abcd'],
         },
       },
-      _0: [null, 2, 3],
+      _0: [0, 2, 3],
     },
     reverse: {
       _t: 'a',
       2: {
         inner: {
-          property: [null, 'abc'],
+          property: [0, 'abc'],
         },
       },
-      _2: [null, 0, 3],
+      _2: [0, 0, 3],
     },
   },
   {
@@ -1328,10 +1328,10 @@ examples.arrays = [
     delta: {
       _t: 'a',
       2: {
-        width: [null, 12],
-        height: [null, 0, 0],
+        width: [0, 12],
+        height: [0, 0, 0],
       },
-      _7: [null, 2, 3],
+      _7: [0, 2, 3],
     },
     reverse: {
       _t: 'a',
@@ -1365,7 +1365,7 @@ examples.arrays = [
     },
     delta: {
       inner: {
-        nonVolatile: [null, 431],
+        nonVolatile: [0, 431],
       },
     },
     reverse: {

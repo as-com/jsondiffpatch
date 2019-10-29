@@ -197,7 +197,7 @@ describe('DiffPatcher', () => {
       left.oldProp.value = 1;
       right.newProp.value = 8;
       expect(delta).to.deep.equal({
-        oldProp: [null, 0, 0],
+        oldProp: [0, 0, 0],
         newProp: [{ value: 5 }],
       });
     });
@@ -206,10 +206,10 @@ describe('DiffPatcher', () => {
   describe('static shortcuts', () => {
     it('diff', () => {
       const delta = jsondiffpatch.diff(4, 5);
-      expect(delta).to.deep.equal([null, 5]);
+      expect(delta).to.deep.equal([0, 5]);
     });
     it('patch', () => {
-      const right = jsondiffpatch.patch(4, [null, 5]);
+      const right = jsondiffpatch.patch(4, [0, 5]);
       expect(right).to.eql(5);
     });
     // it('unpatch', () => {
