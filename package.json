@@ -1,6 +1,6 @@
 {
   "name": "@as-com/jsondiffpatch",
-  "version": "1.3.12",
+  "version": "1.3.13",
   "author": "Andrew Sun",
   "description": "Diff & Patch for Javascript objects",
   "contributors": [
