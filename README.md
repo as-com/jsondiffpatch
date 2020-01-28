@@ -1,7 +1,9 @@
 jsondiffpatch
 =============
 
-This fork removes support for reversing patches to save storage space.
+## WARNING: DO NOT USE THIS FORK UNLESS YOU KNOW WHAT YOU'RE DOING! (you probably don't)
+
+This fork removes support for reversing patches to save storage space. **The storage format is incompatible with upstream jsondiffpatch and may be unstable.**
 
 <!--- badges -->
 [![Build Status](https://secure.travis-ci.org/benjamine/jsondiffpatch.svg)](http://travis-ci.org/benjamine/jsondiffpatch)
