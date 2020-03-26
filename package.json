@@ -1,6 +1,6 @@
 {
   "name": "@as-com/jsondiffpatch",
-  "version": "1.3.13",
+  "version": "1.4.1",
   "author": "Andrew Sun",
   "description": "Diff & Patch for Javascript objects",
   "contributors": [
@@ -56,7 +56,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
-    "codeclimate-test-reporter": "0.0.3",
+    "codeclimate-test-reporter": "^0.5.1",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
@@ -67,6 +67,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "^5.0.0",
     "nodemon": "^1.19.3",
+    "npm-check": "^5.9.0",
     "nyc": "^11.4.1",
     "prettier": "^1.10.2",
     "rollup": "^0.54.1",
@@ -80,7 +81,7 @@
   "bundleDependencies": [],
   "license": "MIT",
   "engines": {
-    "node": ">=4.8.0"
+    "node": ">=8.17.0"
   },
   "homepage": "https://github.com/as-com/jsondiffpatch"
 }
