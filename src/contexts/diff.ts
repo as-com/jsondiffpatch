@@ -2,11 +2,19 @@ import Context from './context';
 import defaultClone from '../clone';
 
 class DiffContext extends Context {
+  left: any;
+  right: any;
+  pipe: string;
+
+  leftIsArray: boolean | undefined;
+
   constructor(left, right) {
     super();
     this.left = left;
     this.right = right;
     this.pipe = 'diff';
+
+    this.leftIsArray = undefined;
   }
 
   setResult(result) {

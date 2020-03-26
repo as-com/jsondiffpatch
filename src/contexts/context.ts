@@ -1,6 +1,28 @@
 import Pipe from '../pipe';
 
 export default class Context {
+  hasResult: boolean;
+  result: any;
+  exiting: boolean;
+  nextPipe: string | Pipe | undefined;
+  next: any;
+  root: any;
+  options: any;
+  children: any;
+  nextAfterChildren: any;
+
+  constructor() {
+    this.hasResult = false;
+    this.result = undefined;
+    this.exiting = false;
+    this.nextPipe = undefined;
+    this.next = undefined;
+    this.root = undefined;
+    this.options = undefined;
+    this.children = undefined;
+    this.nextAfterChildren = undefined;
+  }
+
   setResult(result) {
     this.result = result;
     this.hasResult = true;

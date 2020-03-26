@@ -4,14 +4,14 @@ class Processor {
     this.pipes = {};
   }
 
-  options(options) {
+  options(options?) {
     if (options) {
       this.selfOptions = options;
     }
     return this.selfOptions;
   }
 
-  pipe(name, pipeArg) {
+  pipe(name, pipeArg?) {
     let pipe = pipeArg;
     if (typeof name === 'string') {
       if (typeof pipe === 'undefined') {
@@ -31,7 +31,7 @@ class Processor {
     return pipe;
   }
 
-  process(input, pipe) {
+  process(input, pipe?) {
     let context = input;
     context.options = this.options();
     let nextPipe = pipe || input.pipe || 'default';

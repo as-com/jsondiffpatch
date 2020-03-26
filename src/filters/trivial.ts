@@ -1,3 +1,6 @@
+import DiffContext from "../contexts/diff";
+import PatchContext from "../contexts/patch";
+
 const isArray =
   typeof Array.isArray === 'function'
     ? Array.isArray
@@ -5,7 +8,7 @@ const isArray =
       return a instanceof Array;
     };
 
-export const diffFilter = function trivialMatchesDiffFilter(context) {
+export const diffFilter = function trivialMatchesDiffFilter(context: DiffContext) {
   if (context.left === context.right) {
     context.setResult(undefined).exit();
     return;
@@ -60,7 +63,7 @@ export const diffFilter = function trivialMatchesDiffFilter(context) {
 };
 diffFilter.filterName = 'trivial';
 
-export const patchFilter = function trivialMatchesPatchFilter(context) {
+export const patchFilter = function trivialMatchesPatchFilter(context: PatchContext) {
   if (typeof context.delta === 'undefined') {
     context.setResult(context.left).exit();
     return;
@@ -89,26 +92,3 @@ export const patchFilter = function trivialMatchesPatchFilter(context) {
   }
 };
 patchFilter.filterName = 'trivial';
-
-export const reverseFilter = function trivialReferseFilter(context) {
-  if (typeof context.delta === 'undefined') {
-    context.setResult(context.delta).exit();
-    return;
-  }
-  context.nested = !isArray(context.delta);
-  if (context.nested) {
-    return;
-  }
-  if (context.delta.length === 1) {
-    context.setResult([context.delta[0], 0, 0]).exit();
-    return;
-  }
-  if (context.delta.length === 2) {
-    context.setResult([context.delta[1], context.delta[0]]).exit();
-    return;
-  }
-  if (context.delta.length === 3 && context.delta[2] === 0) {
-    context.setResult([context.delta[0]]).exit();
-  }
-};
-reverseFilter.filterName = 'trivial';

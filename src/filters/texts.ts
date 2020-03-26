@@ -1,5 +1,7 @@
 /* global diff_match_patch */
 import dmp from 'diff-match-patch';
+import type DiffContext from "../contexts/diff";
+import type PatchContext from "../contexts/patch";
 
 let TEXT_DIFF = 2;
 let DEFAULT_MIN_LENGTH = 60;
@@ -56,7 +58,7 @@ let getDiffMatchPatch = function(required) {
   return cachedDiffPatch;
 };
 
-export const diffFilter = function textsDiffFilter(context) {
+export const diffFilter = function textsDiffFilter(context: DiffContext) {
   if (context.leftType !== 'string') {
     return;
   }
@@ -82,7 +84,7 @@ export const diffFilter = function textsDiffFilter(context) {
 };
 diffFilter.filterName = 'texts';
 
-export const patchFilter = function textsPatchFilter(context) {
+export const patchFilter = function textsPatchFilter(context: PatchContext) {
   if (context.nested) {
     return;
   }
@@ -139,15 +141,3 @@ const textDeltaReverse = function(delta) {
   return lines.join('\n');
 };
 
-export const reverseFilter = function textsReverseFilter(context) {
-  if (context.nested) {
-    return;
-  }
-  if (context.delta[2] !== TEXT_DIFF) {
-    return;
-  }
-
-  // text-diff, use a text-diff algorithm
-  context.setResult([textDeltaReverse(context.delta[0]), 0, TEXT_DIFF]).exit();
-};
-reverseFilter.filterName = 'texts';

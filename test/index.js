@@ -2,11 +2,11 @@
  * mocha's bdd syntax is inspired in RSpec
  *   please read: http://betterspecs.org/
  */
-import * as jsondiffpatch from '../build/jsondiffpatch.esm';
-import examples from './examples/diffpatch';
-import chai from 'chai';
+const jsondiffpatch = require("../lib/main");
+const examples = require("./examples/diffpatch");
+const chai = require("chai");
 
-import lcs from '../src/filters/lcs';
+const lcs = require('../lib/filters/lcs').default;
 const expect = chai.expect;
 
 describe('jsondiffpatch', () => {

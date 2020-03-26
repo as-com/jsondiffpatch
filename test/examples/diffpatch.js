@@ -1378,4 +1378,4 @@ examples.arrays = [
   0,
 ];
 
-export default examples;
+module.exports = examples;

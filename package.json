@@ -26,7 +26,7 @@
     "bump": "gulp bump",
     "test": "nyc mocha",
     "watch": "nodemon --exec \"mocha\"",
-    "prepublish": "npm run build && npm run build-dist",
+    "prepublish2": "npm run build && npm run build-dist",
     "cover-report": "open coverage/lcov-report/index.html",
     "cover-publish": "nyc mocha && codeclimate < coverage/lcov.info"
   },
@@ -76,7 +76,8 @@
     "rollup-plugin-istanbul": "^2.0.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-visualizer": "^0.3.1"
+    "rollup-plugin-visualizer": "^0.3.1",
+    "typescript": "^3.8.3"
   },
   "bundleDependencies": [],
   "license": "MIT",

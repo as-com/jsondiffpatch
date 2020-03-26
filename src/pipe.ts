@@ -1,7 +1,20 @@
+import Context from "./contexts/context";
+
+export type Filter = ((context: Context) => void) & {filterName: string};
+
 class Pipe {
-  constructor(name) {
+  name: string;
+  filters: Filter[];
+  processor: any;
+  debug: boolean;
+  resultCheck: ((context: Context) => void) | undefined;
+
+  constructor(name: string) {
     this.name = name;
     this.filters = [];
+    this.processor = undefined;
+    this.debug = false;
+    this.resultCheck = undefined;
   }
 
   process(input) {
@@ -27,7 +40,7 @@ class Pipe {
     }
   }
 
-  log(msg) {
+  log(msg: string) {
     console.log(`[jsondiffpatch] ${this.name} pipe, ${msg}`);
   }
 
@@ -58,7 +71,7 @@ class Pipe {
     return this.filters.map(f => f.filterName);
   }
 
-  after(filterName) {
+  after(filterName: string) {
     let index = this.indexOf(filterName);
     let params = Array.prototype.slice.call(arguments, 1);
     if (!params.length) {
@@ -102,7 +115,7 @@ class Pipe {
     return this;
   }
 
-  shouldHaveResult(should) {
+  shouldHaveResult(should?) {
     if (should === false) {
       this.resultCheck = null;
       return;
@@ -115,7 +128,7 @@ class Pipe {
       if (!context.hasResult) {
         console.log(context);
         let error = new Error(`${pipe.name} failed`);
-        error.noResult = true;
+        error["noResult"] = true;
         throw error;
       }
     };
