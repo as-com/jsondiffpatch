@@ -7,6 +7,9 @@ class DiffContext extends Context {
   pipe: string;
 
   leftIsArray: boolean | undefined;
+  leftType: string | undefined;
+  rightType: string | undefined;
+  rightIsArray: boolean | undefined;
 
   constructor(left, right) {
     super();
@@ -15,6 +18,9 @@ class DiffContext extends Context {
     this.pipe = 'diff';
 
     this.leftIsArray = undefined;
+    this.leftType = undefined;
+    this.rightType = undefined;
+    this.rightIsArray = undefined;
   }
 
   setResult(result) {

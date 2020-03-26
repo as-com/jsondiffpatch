@@ -1,5 +1,11 @@
+import type {Config} from "./contexts/context";
+import Pipe from "./pipe";
+
 class Processor {
-  constructor(options) {
+  selfOptions: Config;
+  pipes: { [k: string]: Pipe | string };
+
+  constructor(options: Config) {
     this.selfOptions = options || {};
     this.pipes = {};
   }
@@ -20,7 +26,7 @@ class Processor {
         this.pipes[name] = pipe;
       }
     }
-    if (name && name.name) {
+    if (name || name.name) {
       pipe = name;
       if (pipe.processor === this) {
         return pipe;

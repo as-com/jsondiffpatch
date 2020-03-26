@@ -2,6 +2,7 @@ import DiffContext from '../contexts/diff';
 import PatchContext from '../contexts/patch';
 
 import lcs from './lcs';
+import {MatchContext} from "../contexts/context";
 
 const ARRAY_MOVE = 3;
 
@@ -33,7 +34,7 @@ function arraysHaveMatchByRef(array1, array2, len1, len2) {
   }
 }
 
-function matchItems(array1, array2, index1, index2, context) {
+function matchItems(array1: any[], array2: any[], index1: number, index2: number, context: MatchContext) {
   let value1 = array1[index1];
   let value2 = array2[index2];
   if (value1 === value2) {
@@ -81,9 +82,11 @@ export const diffFilter = function arraysDiffFilter(context: DiffContext) {
     return;
   }
 
-  let matchContext = {
+  let matchContext: MatchContext = {
     objectHash: context.options && context.options.objectHash,
     matchByPosition: context.options && context.options.matchByPosition,
+    hashCache1: undefined,
+    hashCache2: undefined
   };
   let commonHead = 0;
   let commonTail = 0;
@@ -169,8 +172,8 @@ export const diffFilter = function arraysDiffFilter(context: DiffContext) {
     return;
   }
   // reset hash cache
-  delete matchContext.hashCache1;
-  delete matchContext.hashCache2;
+  matchContext.hashCache1 = undefined;
+  matchContext.hashCache2 = undefined;
 
   // diff is not trivial, find the LCS (Longest Common Subsequence)
   let trimmed1 = array1.slice(commonHead, len1 - commonTail);

@@ -36,7 +36,13 @@ const arrayKeyToSortNumber = key => {
 const arrayKeyComparer = (key1, key2) =>
   arrayKeyToSortNumber(key1) - arrayKeyToSortNumber(key2);
 
-class BaseFormatter {
+abstract class BaseFormatter {
+  includeMoveDestinations: boolean | undefined;
+
+  constructor() {
+    this.includeMoveDestinations = undefined;
+  }
+
   format(delta, left) {
     const context = {};
     this.prepareContext(context);
@@ -46,7 +52,7 @@ class BaseFormatter {
 
   prepareContext(context) {
     context.buffer = [];
-    context.out = function(...args) {
+    context.out = function (...args) {
       this.buffer.push(...args);
     };
   }
@@ -59,13 +65,13 @@ class BaseFormatter {
     return err.toString();
   }
 
-  finalize({ buffer }) {
+  finalize({buffer}: any) {
     if (isArray(buffer)) {
       return buffer.join('');
     }
   }
 
-  recurse(context, delta, left, key, leftKey, movedFrom, isLast) {
+  recurse(context, delta, left, key?, leftKey?, movedFrom?, isLast?) {
     const useMoveOriginHere = delta && movedFrom;
     const leftValue = useMoveOriginHere ? movedFrom.value : left;
 
@@ -100,11 +106,11 @@ class BaseFormatter {
       this.typeFormattterErrorFormatter(
         context,
         err,
-        delta,
-        leftValue,
-        key,
-        leftKey,
-        movedFrom
+        // delta,
+        // leftValue,
+        // key,
+        // leftKey,
+        // movedFrom
       );
       if (typeof console !== 'undefined' && console.error) {
         console.error(err.stack);
@@ -117,6 +123,11 @@ class BaseFormatter {
       this.rootEnd(context, type, nodeType);
     }
   }
+
+  abstract nodeBegin(context: any, key: any, leftKey: any, type: string, nodeType: string, isLast?: any);
+  abstract rootBegin(context: any, type: string, nodeType: string);
+  abstract nodeEnd(context: any, key: any, leftKey: any, type: string, nodeType: string, isLast: any);
+  abstract rootEnd(context: any, type: string, nodeType: string)
 
   formatDeltaChildren(context, delta, left) {
     const self = this;
@@ -222,13 +233,13 @@ class BaseFormatter {
     const lines = value.split('\n@@ ');
     for (let i = 0, l = lines.length; i < l; i++) {
       const line = lines[i];
+      const location = /^(?:@@ )?[-+]?(\d+),(\d+)/.exec(line).slice(1);
       const lineOutput = {
         pieces: [],
-      };
-      const location = /^(?:@@ )?[-+]?(\d+),(\d+)/.exec(line).slice(1);
-      lineOutput.location = {
-        line: location[0],
-        chr: location[1],
+        location: {
+          line: location[0],
+          chr: location[1],
+        }
       };
       const pieces = line.split('\n').slice(1);
       for (
@@ -242,19 +253,22 @@ class BaseFormatter {
         }
         const pieceOutput = {
           type: 'context',
+          text: piece.slice(1)
         };
         if (piece.substr(0, 1) === '+') {
           pieceOutput.type = 'added';
         } else if (piece.substr(0, 1) === '-') {
           pieceOutput.type = 'deleted';
         }
-        pieceOutput.text = piece.slice(1);
+
         lineOutput.pieces.push(pieceOutput);
       }
       output.push(lineOutput);
     }
     return output;
   }
+
 }
+
 
 export default BaseFormatter;

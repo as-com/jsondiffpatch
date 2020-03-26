@@ -10,10 +10,12 @@ import * as arrays from './filters/arrays';
 import * as dates from './filters/dates';
 import * as texts from './filters/texts';
 
+import type {Config} from "./contexts/context";
+
 class DiffPatcher {
   processor: Processor;
 
-  constructor(options?) {
+  constructor(options?: Config) {
     this.processor = new Processor(options);
     this.processor.pipe(
       new Pipe('diff')

@@ -19,7 +19,7 @@ class JSONFormatter extends BaseFormatter {
     context.path = [];
     context.pushCurrentOp = function(obj) {
       const {op, value} = obj;
-      const val = {
+      const val: any = {
         op,
         path: this.currentPath(),
       };
@@ -97,7 +97,7 @@ class JSONFormatter extends BaseFormatter {
   }
 
   format(delta, left) {
-    let context = {};
+    let context: any = {};
     this.prepareContext(context);
     this.recurse(context, delta, left);
     return context.result;
@@ -137,7 +137,7 @@ const opsByDescendingOrder = removeOps => sortBy(removeOps, (a, b) => {
 });
 
 export const partitionOps = (arr, fns) => {
-  const initArr = Array(fns.length + 1).fill().map(() => []);
+  const initArr = Array(fns.length + 1).fill(undefined).map(() => []);
   return arr
     .map(item => {
       let position = fns.map(fn => fn(item)).indexOf(true);

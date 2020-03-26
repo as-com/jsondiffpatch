@@ -1,6 +1,15 @@
 import BaseFormatter from './base';
 
 class AnnotatedFormatter extends BaseFormatter {
+  includeMoveDestinations: boolean;
+
+  // prototype
+  format_added: (context, delta) => void;
+  format_modified: (context, delta) => void;
+  format_deleted: (context, delta) => void;
+  format_moved: (context, delta) => void;
+  format_textdiff: (context, delta) => void;
+
   constructor() {
     super();
     this.includeMoveDestinations = false;
