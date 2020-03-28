@@ -1,27 +1,22 @@
 {
   "name": "@as-com/jsondiffpatch",
-  "version": "1.4.1",
+  "version": "2.4.1",
   "author": "Andrew Sun",
   "description": "Diff & Patch for Javascript objects",
   "contributors": [
     "Andrew Sun",
     "Benjamin Eidelman <beneidel@gmail.com>"
   ],
-  "browser": "dist/jsondiffpatch.umd.js",
-  "main": "dist/jsondiffpatch.cjs.js",
-  "module": "dist/jsondiffpatch.esm.js",
+  "main": "lib/main.js",
   "types": "./dist/index",
   "files": [
-    "dist",
+    "lib",
     "bin"
   ],
   "bin": {
     "jsondiffpatch": "./bin/jsondiffpatch"
   },
   "scripts": {
-    "build": "rollup -c",
-    "build-dist": "rollup -c rollup-dist.config.js",
-    "test-browser": "gulp test-browser",
     "lint": "eslint .",
     "bump": "gulp bump",
     "test": "nyc mocha",
