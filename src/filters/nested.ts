@@ -28,8 +28,8 @@ export function objectsDiffFilter(context: DiffContext) {
     return;
   }
 
-  let name;
-  let child;
+  let name: string;
+  let child: DiffContext;
   const propertyFilter = context.options.propertyFilter;
   for (name in context.left) {
     if (!Object.prototype.hasOwnProperty.call(context.left, name)) {

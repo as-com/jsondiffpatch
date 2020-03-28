@@ -36,7 +36,9 @@ class DiffContext extends Context {
         result[1] = clone(result[1]);
       }
     }
-    return Context.prototype.setResult.apply(this, arguments);
+    // return super.setResult(result);
+    // return Context.prototype.setResult.apply(this, arguments);
+    return Context.prototype.setResult.call(this, result);
   }
 }
 

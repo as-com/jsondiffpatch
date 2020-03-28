@@ -1,5 +1,6 @@
 import Pipe from '../pipe';
 import type DiffContext from './diff';
+import PatchContext from "./patch";
 
 export interface MatchContext {
   objectHash: any;
@@ -54,6 +55,8 @@ export default class Context {
   options: any;
   children: any;
   nextAfterChildren: any;
+  parent: Context;
+  childName: any;
 
   constructor() {
     this.hasResult = false;
@@ -65,6 +68,8 @@ export default class Context {
     this.options = undefined;
     this.children = undefined;
     this.nextAfterChildren = undefined;
+    this.parent = undefined;
+    this.childName = undefined;
   }
 
   setResult(result) {
@@ -90,7 +95,7 @@ export default class Context {
     return this;
   }
 
-  push(child, name) {
+  push(child: Context, name: any) {
     child.parent = this;
     if (typeof name !== 'undefined') {
       child.childName = name;

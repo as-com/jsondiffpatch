@@ -22,7 +22,7 @@ const arrayIndexOf =
       return -1;
     };
 
-function arraysHaveMatchByRef(array1, array2, len1, len2) {
+function arraysHaveMatchByRef(array1: any[], array2: any[], len1: number, len2: number) {
   for (let index1 = 0; index1 < len1; index1++) {
     let val1 = array1[index1];
     for (let index2 = 0; index2 < len2; index2++) {
@@ -90,15 +90,15 @@ export const diffFilter = function arraysDiffFilter(context: DiffContext) {
   };
   let commonHead = 0;
   let commonTail = 0;
-  let index;
-  let index1;
-  let index2;
+  let index: number;
+  let index1: number;
+  let index2: number;
   let array1 = context.left;
   let array2 = context.right;
   let len1 = array1.length;
   let len2 = array2.length;
 
-  let child;
+  let child: DiffContext;
 
   if (
     len1 > 0 &&
@@ -151,7 +151,7 @@ export const diffFilter = function arraysDiffFilter(context: DiffContext) {
       return;
     }
     // trivial case, a block (1 or more consecutive items) was added
-    result = result || {
+    result = {
       _t: 'a',
     };
     for (index = commonHead; index < len2 - commonTail; index++) {
@@ -347,7 +347,7 @@ export const patchFilter = function nestedPatchFilter(context: PatchContext) {
 
   // apply modifications
   let toModifyLength = toModify.length;
-  let child;
+  let child: PatchContext;
   if (toModifyLength > 0) {
     for (index = 0; index < toModifyLength; index++) {
       let modification = toModify[index];
