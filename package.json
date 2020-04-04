@@ -1,6 +1,6 @@
 {
   "name": "@as-com/jsondiffpatch",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "author": "Andrew Sun",
   "description": "Diff & Patch for Javascript objects",
   "contributors": [
@@ -8,15 +8,18 @@
     "Benjamin Eidelman <beneidel@gmail.com>"
   ],
   "main": "lib/main.js",
+  "module": "esm/main.js",
   "types": "./dist/index",
   "files": [
     "lib",
+    "esm",
     "bin"
   ],
   "bin": {
     "jsondiffpatch": "./bin/jsondiffpatch"
   },
   "scripts": {
+    "build": "tsc --build tsconfig.json && tsc --build tsconfig_esm.json",
     "lint": "eslint .",
     "bump": "gulp bump",
     "test": "nyc mocha",
@@ -36,7 +39,8 @@
   ],
   "dependencies": {
     "chalk": "^2.3.0",
-    "diff-match-patch": "^1.0.0"
+    "diff-match-patch": "^1.0.0",
+    "tslib": "^1.11.1"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-babel": "^1.2.2",

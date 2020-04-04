@@ -19,3 +19,6 @@ build
 
 npm-debug.log
 .idea/
+
+/lib/
+/esm/
