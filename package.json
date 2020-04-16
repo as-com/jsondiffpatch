@@ -1,6 +1,6 @@
 {
   "name": "@as-com/jsondiffpatch",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "author": "Andrew Sun",
   "description": "Diff & Patch for Javascript objects",
   "contributors": [
@@ -9,7 +9,7 @@
   ],
   "main": "lib/main.js",
   "module": "esm/main.js",
-  "types": "./dist/index",
+  "types": "./lib/main",
   "files": [
     "lib",
     "esm",
