@@ -220,16 +220,11 @@ export const diffFilter = function arraysDiffFilter(context: DiffContext) {
           removeItemIndex1 < removedItemsLength;
           removeItemIndex1++
         ) {
+          if (removeItemIndex1 >= removedItems.length) {
+            break;
+          }
           index1 = removedItems[removeItemIndex1];
-          if (
-            matchItems(
-              trimmed1,
-              trimmed2,
-              index1 - commonHead,
-              index - commonHead,
-              matchContext
-            )
-          ) {
+          if (matchItems(trimmed1, trimmed2, index1 - commonHead, index - commonHead, matchContext)) {
             // store position move as: [originalValue, newPosition, ARRAY_MOVE]
             result[`_${index1}`].splice(1, 2, index, ARRAY_MOVE);
             if (!includeValueOnMove) {
@@ -305,7 +300,7 @@ export const patchFilter = function nestedPatchFilter(context: PatchContext) {
           );
         }
       } else {
-        if (delta[index].length === 1) {
+        if (Array.isArray(delta[index]) && delta[index].length === 1) {
           // added item at new array
           toInsert.push({
             index: parseInt(index, 10),
